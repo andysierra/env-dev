@@ -137,6 +137,13 @@
     "light": "Ayu Light",
     "dark": "One Dark",
   },
+  // Ondulados más distinguibles: el tema Colorblind usa naranja/ámbar para error y warning (casi iguales)
+  "theme_overrides": {
+    "GitHub Dark Colorblind": {
+      "error": "#ff4040",
+      "warning": "#ffd000",
+    },
+  },
   "lsp": {
     "jdtls": {
       "binary": {
