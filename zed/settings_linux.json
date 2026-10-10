@@ -143,7 +143,13 @@
       "error": "#ff4040",
       "warning": "#ffd000",
     },
+  },  // Guía vertical en la columna 80 (ancho por defecto de Prettier) para JS/TS
+  "languages": {
+    "JavaScript": { "wrap_guides": [80] },
+    "TypeScript": { "wrap_guides": [80] },
+    "TSX": { "wrap_guides": [80] },
   },
+
   "lsp": {
     "jdtls": {
       "binary": {
