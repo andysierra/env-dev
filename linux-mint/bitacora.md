@@ -495,6 +495,8 @@ ctrl+q → quickOpen archivos                      + "-workbench.action.quit": e
 ```
 
 - `settings (work).json` (regla en 100, zoom -1, perfiles de terminal Windows) no se usa en este PC.
+- **Ctrl+O = buscar archivo del proyecto** (`quickOpen` en modo archivos), como en Zed; antes era el diálogo
+  del sistema "Abrir archivo" (`files.openFile`), que queda sin tecla. `Ctrl+Q` hace lo mismo (atajo de siempre).
 - **Ctrl+Space = hover** (`editor.action.showHover`: el cuadro con el error, su descripción y el tipo bajo el
   cursor; de fábrica era `Ctrl+K Ctrl+I`, que sigue andando). Ctrl+Space era el autocompletado manual
   (`triggerSuggest`): pasa a **Ctrl+Shift+Space**, cuya función de fábrica (ayuda de parámetros,

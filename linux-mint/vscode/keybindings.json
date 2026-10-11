@@ -203,5 +203,16 @@
     "key": "ctrl+alt+space",
     "command": "editor.action.triggerParameterHints",
     "when": "editorHasSignatureHelpProvider && editorTextFocus"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "-workbench.action.files.openFile"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "workbench.action.quickOpen",
+    "args": {
+      "mode": "files"
+    }
   }
 ]
