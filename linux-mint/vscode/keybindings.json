@@ -178,5 +178,20 @@
     "key": "ctrl+1",
     "command": "workbench.action.focusActiveEditorGroup",
     "when": "filesExplorerFocus"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "-editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus && !suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+alt+space",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
   }
 ]
