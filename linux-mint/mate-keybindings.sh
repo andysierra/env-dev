@@ -31,6 +31,8 @@ bind custom8 'Captura de área al clipboard (Alt+Shift+S)' 'flameshot gui -c -s'
 bind custom9 'Sublime Text, ventana nueva (Super+S)' 'subl --launch-or-new-window'      '<Mod4>s'
 bind custom10 'Mover ventana al escritorio anterior (Shift+Super+←)'  "$HOME/.local/bin/move-window-ws.sh -1" '<Mod4><Shift>Left'
 bind custom11 'Mover ventana al escritorio siguiente (Shift+Super+→)' "$HOME/.local/bin/move-window-ws.sh +1" '<Mod4><Shift>Right'
+# Mission Control (MissionTab, ~/Escritorio/DEV/MissionTab): como Ctrl+↑ en macOS; Ctrl+Super+←/→ cambian de escritorio
+bind custom12 'Mission Control (Ctrl+Super+↑)' "$HOME/Escritorio/DEV/MissionTab/bin/missiontab" '<Primary><Mod4>Up'
 
 M=org.mate.Marco
 
