@@ -19,7 +19,7 @@ bind custom0 'rofi lanzador (Alt+Space)' 'rofi -show drun' '<Alt>space'
 bind custom1 'rofi lanzador (Alt+F3)'    'rofi -show drun' '<Alt>F3'
 # Ruta absoluta: la sesión de MATE puede no tener ~/.local/bin en el PATH
 bind custom2 'Historial de clipboard (greenclip + rofi) Alt+V' "$HOME/.local/bin/clipboard.sh" '<Alt>v'
-bind custom3 'yazi en terminal maximizada (Alt+E)' "$HOME/.local/bin/yazi-term.sh" '<Alt>e'
+bind custom3 'yazi en terminal maximizada (Super+Alt+E)' "$HOME/.local/bin/yazi-term.sh" '<Mod4><Alt>e'
 bind custom4 'Terminal (Super+Enter)'     'wezterm'                                '<Mod4>Return'
 bind custom5 'Zed en ~/Escritorio/DEV (Super+C)' "$HOME/.local/bin/zed $HOME/Escritorio/DEV" '<Mod4>c'
 bind custom6 'Escribir ~ (Alt+N)'         "$HOME/.local/bin/type-tilde.sh"         '<Alt>n'

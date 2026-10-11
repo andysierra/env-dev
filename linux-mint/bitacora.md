@@ -28,7 +28,7 @@ Construido y verificado el 2026-10-05 (PC de escritorio, un monitor `HDMI-1` 192
 | `Alt+Shift+4` | Captura de área → al soltar el mouse se **guarda en `~/Imágenes`** (`captura_<fecha>_<hora>.png`) |
 | `Super+S` | Sublime Text en ventana nueva (no pestaña); si está cerrado, lo abre |
 | `Ctrl+1` *(en VS Code, Sublime y Zed)* | Foco al panel de archivos, para elegir con flechas/Enter sin el mouse |
-| `Alt+E` | Explorador de archivos: yazi en terminal nueva maximizada, en `~/Escritorio` (`q` cierra la ventana) |
+| `Super+Alt+E` | Explorador de archivos: yazi en terminal nueva maximizada, en `~/Escritorio` (`q` cierra la ventana) |
 | `Escape` / `Alt+Space` (dentro de rofi) | Cerrar rofi |
 
 Dentro de yazi (además del preset):
@@ -372,7 +372,7 @@ placeholder      "$@"                          %s / %s1 / %d1 (yazi 26.9; "$@" =
 
 WezTerm reutiliza el proceso GUI ya abierto: sin `--cwd` abriría en el cwd de ese proceso, no en la carpeta de yazi.
 
-`Alt+E` → `yazi-term.sh`: **siempre ventana nueva** (mismo criterio que el Mac),
+`Super+Alt+E` → `yazi-term.sh`: **siempre ventana nueva** (mismo criterio que el Mac),
 `wezterm start --always-new-process --cwd ~/Escritorio -- yazi ~/Escritorio`. WezTerm no tiene `--maximize`:
 lo hace el evento `gui-startup` de `wezterm.lua` para las ventanas cuyo comando es `yazi`, y ese evento solo
 corre en un proceso nuevo (de ahí `--always-new-process`). yazi va directo (sin bash detrás) → `q` cierra la ventana.
@@ -401,7 +401,7 @@ Dónde se usa (todo lo que antes abría mate-terminal):
 Super+Enter           custom4 → wezterm                              (mate-keybindings.sh)
 Ctrl+Alt+T            Marco run-command-terminal → org.mate.applications-terminal exec='wezterm' exec-arg='-e'
                       (lo mismo usan "Abrir en terminal" de Caja y las apps con Terminal=true)
-Alt+E                 bin/yazi-term.sh (ver sección yazi)
+Super+Alt+E           bin/yazi-term.sh (ver sección yazi)
 yazi T / Ctrl+T       wezterm start --cwd "$PWD"                     (yazi/keymap.toml)
 claudia (rofi)        wezterm start --class claudia -- bash -i -c "claudia; exec bash"
 ```
@@ -433,7 +433,7 @@ vim -es -u ~/.vimrc -i NONE -c 'PlugInstall --sync' -c 'qa!'     # 9 plugins →
 - **gruvbox:** `g:gruvbox_contrast_dark` tiene que ir **antes** de `colorscheme` (después no tiene efecto).
   `silent! colorscheme` evita el error en el primer arranque, antes de `PlugInstall`.
 - **`vi` → vim.gtk3**: apt lo registra en `update-alternatives`. Importa para yazi: su opener `edit` usa
-  `${EDITOR:-vi}` y lanzado con `Alt+E` (sin bash) no hay `EDITOR` → cae en `vi` = vim completo.
+  `${EDITOR:-vi}` y lanzado con `Super+Alt+E` (sin bash) no hay `EDITOR` → cae en `vi` = vim completo.
 - Verificar: `vim --version | grep clipboard` → `+clipboard`.
 
 ### 8b. Sublime Text 4
@@ -588,7 +588,7 @@ Requiere antes en `~/.local/bin`: `clipboard.sh`, `yazi-term.sh`, `type-tilde.sh
 Hace, en vivo y sin cerrar sesión:
 
 ```text
-custom0..11        Alt+Space, Alt+F3 (rofi) · Alt+V (clipboard) · Alt+E (yazi) · Super+Enter (terminal)
+custom0..11        Alt+Space, Alt+F3 (rofi) · Alt+V (clipboard) · Super+Alt+E (yazi) · Super+Enter (terminal)
                    Super+C (Zed en ~/Escritorio/DEV) · Alt+N (~) · Alt+Q (cerrar, wmctrl -c :ACTIVE:)
                    Alt+Shift+S (flameshot gui -c -s) · Super+S (subl --launch-or-new-window)
 Marco              libera Alt+Space (activate-window-menu) · 2 escritorios (venía con 4)
@@ -598,7 +598,7 @@ custom10/11        Shift+Super+←/→ → bin/move-window-ws.sh -1/+1 (wmctrl)
                    run-command-screenshot (captura completa de MATE, venía en Alt+Shift+4) → disabled
 ```
 
-Equivalencia con `rc.xml` de la bitácora CachyOS: `Super+Alt+E` → `Alt+E`, `Super+V` → `Alt+V` (elegidos así);
+Equivalencia con `rc.xml` de la bitácora CachyOS: `Super+Alt+E` igual (yazi), `Super+V` → `Alt+V` (elegido así);
 `Super+M` (monitores) y `Fn+brillo/volumen` no aplican (un monitor; MATE maneja las teclas multimedia).
 
 Alternativa gráfica: *Centro de control → Atajos de teclado*.
@@ -643,7 +643,6 @@ al receptor sin errores (`pw-top`, columna ERR en 0) pero los auriculares no esc
 - **`Alt+V` global le gana a las apps**: se pierden los mnemónicos `Alt+V` (menú "Ver") y `Alt+V` en
   terminal/vim. **Choca con el spec opcional de keyd** (`../linux/spec-keyd-cmd-copypaste.md`, donde
   `Alt+V` = pegar): si se instala keyd, quitar la línea `v = C-v` de su `[alt]`.
-- **`Alt+E` global**: se pierde el mnemónico `Alt+E` (menú "Editar") dentro de las apps.
 - **Atajo que escribe texto (Alt+N) no escribía nada:** mientras la tecla del atajo sigue apretada,
   mate-settings-daemon mantiene el teclado capturado (*passive grab*) y lo que tipea `xdotool` va a parar
   al que capturó, no a la ventana. `type-tilde.sh` espera 0.25 s (a que se suelte la N) y usa
