@@ -131,7 +131,7 @@
         "editor::SelectToEndOfLine",
         { "stop_at_soft_wraps": true },
       ],
-      "ctrl-alt-space": "editor::ShowCharacterPalette",
+      "ctrl-alt-space": "editor::ShowSignatureHelp",   // ayuda de parámetros (como VS Code); también ctrl-i
       "ctrl-;": "editor::ToggleLineNumbers",
       "ctrl-'": "editor::ToggleSelectedDiffHunks",
       "ctrl-\"": "editor::ExpandAllDiffHunks",
@@ -528,8 +528,8 @@
       "ctrl-k ctrl-9": "editor::FoldAtLevel_9",
       "ctrl-k ctrl-0": "editor::FoldAll",
       "ctrl-k ctrl-j": "editor::UnfoldAll",
-      "ctrl-space": "editor::ShowCompletions",
-      "ctrl-shift-space": "editor::ShowWordCompletions",
+      "ctrl-space": "editor::Hover",   // cuadro de info/errores (como VS Code); también ctrl-k ctrl-i
+      "ctrl-shift-space": "editor::ShowCompletions",   // sugerencias (como VS Code)
       "ctrl-.": "editor::ToggleCodeActions",
       "ctrl-k r": "editor::RevealInFileManager",
       "ctrl-k p": "editor::CopyPath",

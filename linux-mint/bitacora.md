@@ -307,6 +307,20 @@ grep -q '^StartupWMClass=' "$F" || sed -i '0,/^Icon=zed$/s//Icon=zed\nStartupWMC
 - Si se reinstala Zed con `install.sh`, se regenera el `.desktop`: volver a correr los `sed`.
 - Verificar: `python3 -c "import gi; gi.require_version('Gtk','3.0'); from gi.repository import Gtk; print(Gtk.IconTheme.get_default().lookup_icon('zed',48,0).get_filename())"`.
 
+### 5d. Zed — mismos atajos de ayuda que VS Code
+
+`../zed/keybindings_linux.json` (→ `~/.config/zed/keymap.json`), contexto `Editor`, homologado con VS Code (8b2):
+
+```text
+Función                        Zed: acción                   Atajo              Antes en Zed
+-----------------------------  ----------------------------  -----------------  -------------------------------------
+Cuadro info/errores (hover)    editor::Hover                 Ctrl+Space         ShowCompletions (Hover: Ctrl+K Ctrl+I, sigue)
+Sugerencias (autocompletado)   editor::ShowCompletions       Ctrl+Shift+Space   ShowWordCompletions (solo palabras del archivo)
+Ayuda de parámetros            editor::ShowSignatureHelp     Ctrl+Alt+Space     ShowCharacterPalette (emojis); Ctrl+I sigue
+```
+
+Los `ctrl-space`/`ctrl-shift-space` del panel de git (stage/unstage, stash) son de otro contexto y no cambian.
+
 ### 6. greenclip — historial de clipboard
 
 ```sh
@@ -485,7 +499,7 @@ ctrl+q → quickOpen archivos                      + "-workbench.action.quit": e
   cursor; de fábrica era `Ctrl+K Ctrl+I`, que sigue andando). Ctrl+Space era el autocompletado manual
   (`triggerSuggest`): pasa a **Ctrl+Shift+Space**, cuya función de fábrica (ayuda de parámetros,
   `triggerParameterHints`; igual sale sola al escribir `(`) pasa a **Ctrl+Alt+Space** (libre en MATE). El autocompletado sigue saliendo solo al escribir;
-  con la lista abierta, Ctrl+Space conserva su función (detalles de la sugerencia) por el `when: !suggestWidgetVisible`.
+  con la lista abierta, Ctrl+Space conserva su función (detalles de la sugerencia) por el `when: !suggestWidgetVisible`. En Zed, lo mismo: sección 5d.
 - **"Sin usar" = ondulado amarillo** (no rojo, que parece error de sintaxis). VS Code ya muestra como warning los
   chequeos de estilo de TS (`js/ts.reportStyleChecksAsWarnings`), pero su lista NO incluye `ts(6198)` "All
   destructured elements are unused" (`({ title, subtitle }) =>`), que sale como error rojo. Ningún ajuste cambia
