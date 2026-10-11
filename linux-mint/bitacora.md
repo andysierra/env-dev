@@ -483,7 +483,8 @@ ctrl+q → quickOpen archivos                      + "-workbench.action.quit": e
 - `settings (work).json` (regla en 100, zoom -1, perfiles de terminal Windows) no se usa en este PC.
 - **Ctrl+Space = hover** (`editor.action.showHover`: el cuadro con el error, su descripción y el tipo bajo el
   cursor; de fábrica era `Ctrl+K Ctrl+I`, que sigue andando). Ctrl+Space era el autocompletado manual
-  (`triggerSuggest`): pasa a **Ctrl+Alt+Space** (libre en MATE). El autocompletado sigue saliendo solo al escribir;
+  (`triggerSuggest`): pasa a **Ctrl+Shift+Space**, cuya función de fábrica (ayuda de parámetros,
+  `triggerParameterHints`; igual sale sola al escribir `(`) pasa a **Ctrl+Alt+Space** (libre en MATE). El autocompletado sigue saliendo solo al escribir;
   con la lista abierta, Ctrl+Space conserva su función (detalles de la sugerencia) por el `when: !suggestWidgetVisible`.
 - **"Sin usar" = ondulado amarillo** (no rojo, que parece error de sintaxis). VS Code ya muestra como warning los
   chequeos de estilo de TS (`js/ts.reportStyleChecksAsWarnings`), pero su lista NO incluye `ts(6198)` "All
