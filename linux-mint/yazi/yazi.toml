@@ -7,14 +7,17 @@ linemode = "none"
 
 [opener]
 # Ruta absoluta: si yazi se lanza desde un atajo de MATE, ~/.local/bin no está en el PATH
+rendu = [
+  { run = 'rendu %s', desc = "Rendu (leer markdown)", orphan = true, for = "linux" },
+]
 zed = [
   { run = '"$HOME/.local/bin/zed" %s', desc = "Zed", orphan = true, for = "linux" },
 ]
 
 [open]
 prepend_rules = [
-  { url = "*.md",           use = ["zed", "edit", "reveal"] },
-  { url = "*.markdown",     use = ["zed", "edit", "reveal"] },
-  { url = "*.mdx",          use = ["zed", "edit", "reveal"] },
-  { mime = "text/markdown", use = ["zed", "edit", "reveal"] },
+  { url = "*.md",           use = ["rendu", "zed", "edit", "reveal"] },
+  { url = "*.markdown",     use = ["rendu", "zed", "edit", "reveal"] },
+  { url = "*.mdx",          use = ["rendu", "zed", "edit", "reveal"] },
+  { mime = "text/markdown", use = ["rendu", "zed", "edit", "reveal"] },
 ]

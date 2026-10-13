@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Utility;
+Comment=Lightweight desktop Markdown viewer
+Exec=rendu %f
+StartupWMClass=rendu
+Icon=rendu
+Name=Rendu
+Terminal=false
+Type=Application
+MimeType=text/markdown

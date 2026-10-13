@@ -363,12 +363,17 @@ Diferencias Linux vs Mac en `yazi.toml` / `keymap.toml`:
 
 ```text
                  Mac (../yazi/config)          Linux (yazi/)
-.md              Readdown                      Zed (ruta absoluta ~/.local/bin/zed)
+.md              Readdown                      Rendu (Zed como 2ª opción con O)
 .drawio          PWA draw.io                   — (draw.io no instalado)
 T / Ctrl+T       iTerm (~/bin/iterm-here.sh)   wezterm start --cwd "$PWD"
 F / Ctrl+O       open -R (Finder)              caja --select %s1
 placeholder      "$@"                          %s / %s1 / %d1 (yazi 26.9; "$@" = 0 archivos, sin error)
 ```
+
+**Markdown → Rendu** (lector, `.deb` de su web; queda como app por defecto de `text/markdown`). En yazi el
+opener es `rendu %s`; Zed sigue disponible con `O` (abrir con). El `Rendu.desktop` del paquete trae `Exec=rendu`
+**sin `%f`** → con doble clic en Caja abría Rendu sin el archivo: `applications/Rendu.desktop` (copia con `%f`)
+en `~/.local/share/applications/` lo tapa.
 
 WezTerm reutiliza el proceso GUI ya abierto: sin `--cwd` abriría en el cwd de ese proceso, no en la carpeta de yazi.
 
@@ -495,6 +500,8 @@ ctrl+q → quickOpen archivos                      + "-workbench.action.quit": e
 ```
 
 - `settings (work).json` (regla en 100, zoom -1, perfiles de terminal Windows) no se usa en este PC.
+- **Alt+Enter = arreglos rápidos** (`editor.action.quickFix`, lo mismo que `Ctrl+.`), solo con el foco en el texto:
+  en el buscador Alt+Enter sigue siendo "seleccionar todas las coincidencias".
 - **Ctrl+O = buscar archivo del proyecto** (`quickOpen` en modo archivos), como en Zed; antes era el diálogo
   del sistema "Abrir archivo" (`files.openFile`), que queda sin tecla. `Ctrl+Q` hace lo mismo (atajo de siempre).
 - **Ctrl+Space = hover** (`editor.action.showHover`: el cuadro con el error, su descripción y el tipo bajo el
