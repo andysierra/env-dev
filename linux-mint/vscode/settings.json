@@ -34,6 +34,8 @@
     }
   },
   "editor.fontSize": 15,
+  "editor.fontFamily": "'Fira Code', monospace",
+  "editor.fontLigatures": true,
   "workbench.editor.restoreViewState": false,
   "files.hotExit": "off",
   "terminal.integrated.lineHeight": 0.5,

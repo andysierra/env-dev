@@ -502,6 +502,8 @@ ctrl+q → quickOpen archivos                      + "-workbench.action.quit": e
 - `settings (work).json` (regla en 100, zoom -1, perfiles de terminal Windows) no se usa en este PC.
 - **Alt+Enter = arreglos rápidos** (`editor.action.quickFix`, lo mismo que `Ctrl+.`), solo con el foco en el texto:
   en el buscador Alt+Enter sigue siendo "seleccionar todas las coincidencias".
+- **Fuente del código: Fira Code con ligaduras** (`editor.fontFamily`, `editor.fontLigatures`; `=>` se ve `⇒`).
+  Misma fuente que Zed; se instala con `install-fonts.sh` (8c).
 - **Ctrl+O = buscar archivo del proyecto** (`quickOpen` en modo archivos), como en Zed; antes era el diálogo
   del sistema "Abrir archivo" (`files.openFile`), que queda sin tecla. `Ctrl+Q` hace lo mismo (atajo de siempre).
 - **Ctrl+Space = hover** (`editor.action.showHover`: el cuadro con el error, su descripción y el tipo bajo el
