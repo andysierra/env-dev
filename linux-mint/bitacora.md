@@ -635,6 +635,21 @@ salida, pero (1) Mint no cambia la salida por defecto sola → `pactl set-defaul
 ícono de sonido; y (2) **el G435 puede estar en modo Bluetooth** (enlazado a otro equipo): el PC le manda audio
 al receptor sin errores (`pw-top`, columna ERR en 0) pero los auriculares no escuchan la radio del receptor.
 
+### 12. Claude Code — skills globales (/paraphernalia, /pdiff)
+
+```sh
+cp -r ../skills/paraphernalia ../skills/pdiff ~/.claude/skills/
+```
+
+- `/paraphernalia`: explicar un sistema a alguien externo con diagramas Mermaid (elige el modelo mental antes que
+  la sintaxis). `/pdiff`: un cambio de código (diff/commits) → PDF con diagrama, diagnóstico y diff coloreado.
+- `/pdiff` usa Chrome/Brave sin interfaz (`build.py`; aquí encuentra `brave-browser`). Sin destino explícito, el
+  PDF va al **escritorio real**: `$(xdg-user-dir DESKTOP)` (`~/Escritorio` en español; el original decía
+  `~/Desktop`, que no existe aquí). `build.py` crea la carpeta de destino si falta.
+- La copia del repo (público) está **anonimizada**: nombres del sistema y del cliente del trabajo → genéricos.
+  La instalada en `~/.claude/skills` puede tener los reales.
+- `~/.claude/skills/synced/` la gestiona Claude (sincronización con la cuenta): no tocarla.
+
 ### Gotchas (lo que costó descubrir)
 
 - **La sesión de MATE no tiene `~/.local/bin` en el PATH** si la carpeta no existía al iniciar sesión

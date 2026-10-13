@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title><!--TITULO--></title>
+<style>
+  @page { size: A4; margin: 16mm 14mm; }
+  body { font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; color: #1a1a1a; font-size: 11pt; }
+  h1 { font-size: 18pt; margin-bottom: 2mm; }
+  h2 { font-size: 13pt; margin-top: 8mm; margin-bottom: 2mm; border-bottom: 1px solid #ccc; padding-bottom: 1mm; }
+  .subtitle { color: #555; font-size: 10pt; margin-bottom: 6mm; }
+  .box { background: #f4f4f4; border-left: 3px solid #888; padding: 3mm 4mm; margin: 3mm 0; border-radius: 2px; }
+  .box.decision { border-left-color: #2d7a2d; }
+  .box.pendiente { border-left-color: #b8860b; }
+  ul { margin: 2mm 0; padding-left: 5mm; }
+  li { margin-bottom: 1.5mm; }
+  code { background: #eee; padding: 0 1mm; border-radius: 2px; font-family: "SF Mono", Menlo, monospace; font-size: 9.5pt; }
+  .diffbox { font-family: "SF Mono", Menlo, monospace; font-size: 8pt; line-height: 1.35; border: 1px solid #ddd; border-radius: 3px; margin-top: 3mm; }
+  .diffbox > div { white-space: pre-wrap; word-break: break-all; padding: 0 2mm; }
+  .file { background: #2d3748; color: #fff; font-weight: bold; padding: 1mm 2mm !important; margin-top: 2mm; }
+  .meta { color: #666; }
+  .hunk { background: #e6f0ff; color: #1a4d99; }
+  .add { background: #e6ffed; color: #0a5c1f; }
+  .del { background: #ffeef0; color: #8a1620; }
+  .ctx { color: #333; }
+  .diagrama { text-align: center; margin: 4mm 0; }
+  .diagrama .mermaid { display: inline-block; }
+  .footer { margin-top: 8mm; font-size: 9pt; color: #777; }
+</style>
+<!--MERMAID_SCRIPT-->
+</head>
+<body>
+  <h1><!--TITULO--></h1>
+  <div class="subtitle"><!--SUBTITULO--></div>
+
+  <!-- Paraphernalia SIEMPRE va primero: un diagrama Mermaid que le da al lector el modelo
+       mental del cambio (antes/después, causa-raíz) antes de que vea una sola línea de diff.
+       Si esta sección no aplica (diff trivial, no amerita modelo mental), se puede omitir
+       borrando todo el bloque .diagrama junto con MERMAID_SCRIPT del head. -->
+  <div class="diagrama">
+    <pre class="mermaid"><!--DIAGRAMA_MERMAID--></pre>
+  </div>
+
+  <h2>Problema / motivación</h2>
+  <!--PROBLEMA-->
+
+  <h2>Diagnóstico</h2>
+  <!--DIAGNOSTICO-->
+
+  <!-- Bloque opcional — bórralo si no hubo decisiones explícitas que registrar -->
+  <h2>Decisiones</h2>
+  <!--DECISIONES-->
+
+  <h2>Cambios aplicados</h2>
+  <!--CAMBIOS-->
+
+  <!-- Bloque opcional — bórralo si no queda nada pendiente -->
+  <h2>Pendientes</h2>
+  <!--PENDIENTES-->
+
+  <h2>Diff completo</h2>
+  <div class="diffbox">
+<!--DIFF-->
+  </div>
+
+  <div class="footer"><!--PIE--></div>
+</body>
+</html>
