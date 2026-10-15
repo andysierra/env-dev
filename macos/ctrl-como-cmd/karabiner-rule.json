@@ -1,0 +1,2297 @@
+{
+  "description": "Teclado externo: Ctrl+tecla actua como Cmd+tecla (salvo terminales)",
+  "manipulators": [
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "e",
+        "modifiers": {
+          "mandatory": [
+            "control",
+            "option"
+          ],
+          "optional": [
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "shell_command": "__HOME__/bin/yazi-desktop.sh"
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "n",
+        "modifiers": {
+          "mandatory": [
+            "control",
+            "option"
+          ],
+          "optional": [
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "shell_command": "__HOME__/bin/ni-open --frontmost"
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "a",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "a",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "b",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "b",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "c",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "c",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "d",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "d",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "e",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "e",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "f",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "f",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "g",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "g",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "h",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "h",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "i",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "i",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "j",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "j",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "k",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "k",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "l",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "l",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "m",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "m",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "n",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "n",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "o",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "o",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "p",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "p",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "r",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "r",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "s",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "s",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "t",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "t",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "u",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "u",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "v",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "v",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "w",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "w",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "x",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "x",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "y",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "y",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "z",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "z",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "1",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "1",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "2",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "2",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "3",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "3",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "4",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "4",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "5",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "5",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "6",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "6",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "7",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "7",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "8",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "8",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "9",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "9",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "0",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "0",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "hyphen",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "hyphen",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "equal_sign",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "equal_sign",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "open_bracket",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "open_bracket",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "close_bracket",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "close_bracket",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "backslash",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "backslash",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "semicolon",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "semicolon",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "quote",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "quote",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "comma",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "comma",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "period",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "period",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "slash",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "slash",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "grave_accent_and_tilde",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "grave_accent_and_tilde",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "non_us_backslash",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "non_us_backslash",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "device_unless",
+          "identifiers": [
+            {
+              "is_built_in_keyboard": true
+            }
+          ]
+        },
+        {
+          "type": "frontmost_application_unless",
+          "bundle_identifiers": [
+            "^com\\.googlecode\\.iterm2$",
+            "^com\\.apple\\.Terminal$",
+            "^com\\.mitchellh\\.ghostty$",
+            "^dev\\.warp\\.Warp-Stable$",
+            "^net\\.kovidgoyal\\.kitty$",
+            "^org\\.alacritty$",
+            "^com\\.github\\.wez\\.wezterm$"
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "return_or_enter",
+        "modifiers": {
+          "mandatory": [
+            "control"
+          ],
+          "optional": [
+            "shift",
+            "option",
+            "caps_lock"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "return_or_enter",
+          "modifiers": [
+            "command"
+          ]
+        }
+      ]
+    }
+  ]
+}
