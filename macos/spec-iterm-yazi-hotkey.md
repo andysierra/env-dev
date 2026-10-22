@@ -741,3 +741,7 @@ PRUEBA      osascript -l JavaScript ~/bin/yazi-desktop.js --dry-sweep   (solo re
 TERMINAL    fuera de yazi y sin riesgo de GC: Shift+T / Ctrl+T (shell --orphan)
 ```
 Nota: el repo tenía una versión vieja (singleton); se sincronizó con la que corre en ~/bin (ventana nueva + título "yazi").
+
+Keymap: `macos/.config/yazi/keymap.toml` es ahora el keymap completo instalado (T/Ctrl+T, `{`/`}` saltan 5,
+F/Ctrl+O = Finder, `j`/`I` = easyjump); `iterm-yazi/keymap.toml` sigue siendo solo el mínimo del instalador.
+Decisión de diseño (2026-10-22): se descartó el segador por inactividad (b) y el cierre al abrir (a); ganó barrido en ⌥⌘E + cupo de 2 (c+d).
