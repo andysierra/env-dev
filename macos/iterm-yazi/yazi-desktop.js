@@ -1,8 +1,13 @@
-// Lanzador de yazi en iTerm: UNA sola ventana (singleton), en ~/Desktop, maximizada.
-// Uso: osascript -l JavaScript yazi-desktop.js [id-ventana-conocida]
-// Imprime el id de la ventana usada (el wrapper .sh lo guarda como estado).
+// Lanzador de yazi en iTerm: SIEMPRE una ventana nueva, en ~/Desktop, maximizada, titulada "yazi".
+// Excepcion: si iTerm estaba cerrado, reutiliza la ventana que abre al lanzarse (solo si es un shell inactivo).
+// Antes de abrir la nueva, barre (GC) los yazi olvidados: conserva los KEEP mas recientes
+// (por atime del tty = ultimo input) y cierra el resto. Nunca toca un yazi con hijos vivos
+// (p.ej. el bash de ":" -> bash) ni un yazi lanzado a mano desde un shell (`y`).
+// Uso: osascript -l JavaScript yazi-desktop.js [--dry-sweep]   (dry: solo reporta, no abre ni cierra)
 
 const CMD = "/bin/zsh -lc 'cd ~/Desktop && exec yazi'";
+const TITLE = "yazi";
+const KEEP = 2;
 const SHELLS = ["login", "zsh", "-zsh", "bash", "-bash", "sh", "-sh"];
 
 function run(argv) {
@@ -11,30 +16,18 @@ function run(argv) {
   sh.includeStandardAdditions = true;
 
   const iTerm = Application('iTerm');
-  const wanted = parseInt(argv[0], 10);
   const wasRunning = iTerm.running();
+
+  if (argv[0] === "--dry-sweep") return sweep(iTerm, sh, true);
+  if (wasRunning) { try { sweep(iTerm, sh, false); } catch (e) { /* el GC nunca bloquea abrir yazi */ } }
 
   if (!wasRunning) {
     iTerm.launch();                     // launch (no activate) para no forzar ventana extra
     for (let i = 0; i < 40 && iTerm.windows().length === 0; i++) delay(0.25);
   }
 
-  // 1) Singleton: si la ventana de yazi sigue viva, solo traerla al frente.
-  //    (todo en try/catch: la ventana puede estar cerrandose justo ahora)
-  if (wasRunning && !isNaN(wanted)) {
-    try {
-      const known = findWindow(iTerm, w => w.id() === wanted);
-      if (known) {
-        iTerm.activate();
-        known.select();
-        maximize(known);
-        return String(wanted);
-      }
-    } catch (e) { /* ventana muerta -> se crea una nueva abajo */ }
-  }
-
-  // 2) Arranque en frio: reutilizar la ventana que iTerm abre al lanzarse,
-  //    pero solo si es un shell inactivo (nunca escribir sobre trabajo ajeno).
+  // Arranque en frio: reutilizar la ventana que iTerm abre al lanzarse,
+  // pero solo si es un shell inactivo (nunca escribir sobre trabajo ajeno).
   let win = null;
   if (!wasRunning) {
     try {
@@ -43,13 +36,53 @@ function run(argv) {
     } catch (e) { win = null; }
   }
 
-  // 3) Si no habia nada reutilizable, ventana nueva con yazi.
+  // Si no habia nada reutilizable (o iTerm ya corria), ventana nueva con yazi.
   if (!win) win = iTerm.createWindowWithDefaultProfile({ command: CMD });
 
+  try { win.currentTab.currentSession.name = TITLE; } catch (e) { /* titulo opcional */ }
   iTerm.activate();
   win.select();
   maximize(win);
   return String(win.id());
+}
+
+// GC de yazi olvidados. Candidato = ventana de 1 tab/1 sesion cuyo tty tiene un yazi nacido del
+// hotkey (padre NO es un shell) y sin hijos vivos. Se conservan los KEEP con input mas reciente.
+function sweep(iTerm, sh, dry) {
+  const out = (cmd) => sh.doShellScript(cmd).split("\r").join("\n");
+  const cands = [], log = [];
+  let ws = [];
+  try { ws = iTerm.windows(); } catch (e) { return ""; }
+  for (let i = 0; i < ws.length; i++) {
+    try {
+      const w = ws[i];
+      if (w.tabs().length !== 1 || w.tabs()[0].sessions().length !== 1) continue;
+      const tty = w.tabs()[0].sessions()[0].tty().replace("/dev/", "");
+      const rows = out("ps -t " + tty + " -o pid=,ppid=,comm= 2>/dev/null").split("\n")
+        .map(l => l.trim().split(/\s+/)).filter(r => r.length >= 3);
+      const y = rows.find(r => basename(r.slice(2).join(" ")) === "yazi");
+      if (!y) continue;
+      const parent = out("ps -o comm= -p " + y[1] + " 2>/dev/null").trim();
+      if (/sh$/.test(basename(parent))) { log.push(tty + " yazi pid " + y[0] + ": a mano (padre shell), no se toca"); continue; }
+      const kids = out("pgrep -P " + y[0] + " | wc -l").trim();
+      if (kids !== "0") { log.push(tty + " yazi pid " + y[0] + ": PROTEGIDO (" + kids + " hijo/s vivos)"); continue; }
+      const atime = parseInt(out("stat -f %a /dev/" + tty).trim(), 10);
+      cands.push({ w: w, pid: y[0], tty: tty, atime: atime });
+    } catch (e) { /* ventana cerrandose */ }
+  }
+  cands.sort((a, b) => b.atime - a.atime);
+  cands.forEach((c, n) => {
+    if (n < KEEP) { log.push(c.tty + " yazi pid " + c.pid + ": se conserva (#" + (n + 1) + " mas reciente)"); return; }
+    log.push(c.tty + " yazi pid " + c.pid + ": " + (dry ? "se CERRARIA" : "CERRADO"));
+    if (dry) return;
+    try { sh.doShellScript("kill -TERM " + c.pid); } catch (e) { /* ya murio */ }
+    delay(0.4);
+    try { c.w.close(); } catch (e) { /* iTerm ya la cerro al morir el proceso */ }
+  });
+  if (!dry && log.length) {
+    try { sh.doShellScript("mkdir -p ~/.cache && printf '%s\\n' " + JSON.stringify(new Date().toISOString() + "\n" + log.join("\n")) + " >> ~/.cache/yazi-desktop-gc.log"); } catch (e) {}
+  }
+  return log.join("\n");
 }
 
 // Recorre las ventanas tolerando referencias muertas (ventanas cerrandose).

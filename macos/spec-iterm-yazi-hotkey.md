@@ -723,3 +723,21 @@ on   = "<C-t>"
 run  = 'shell --orphan "$HOME/bin/iterm-here.sh"'
 desc = "Abrir iTerm (ventana nueva) en el directorio actual"
 ```
+
+---
+
+# GC de yazi olvidados (2026-10-22)
+
+Uso real: abrir → buscar → abrir → **olvidar** (nunca cerrar). Cada ⌥⌘E abre ventana nueva, así que
+se acumulaban. `yazi-desktop.js` ahora barre **antes** de abrir la nueva.
+
+```text
+CANDIDATO   ventana de 1 tab/1 sesión, con un yazi cuyo padre NO es un shell (nacido del hotkey)
+PROTEGIDO   yazi con hijos vivos (el bash/zsh de ":" -> bash, una subida…): nunca se mata
+CUPO        de los candidatos se conservan los KEEP=2 con input más reciente (atime del tty)
+CIERRE      kill -TERM al yazi + close de la ventana; lo cerrado queda en ~/.cache/yazi-desktop-gc.log
+A MANO      yazi lanzado desde un shell (`y`) no se toca
+PRUEBA      osascript -l JavaScript ~/bin/yazi-desktop.js --dry-sweep   (solo reporta)
+TERMINAL    fuera de yazi y sin riesgo de GC: Shift+T / Ctrl+T (shell --orphan)
+```
+Nota: el repo tenía una versión vieja (singleton); se sincronizó con la que corre en ~/bin (ventana nueva + título "yazi").
