@@ -28,7 +28,7 @@ Construido y verificado el 2026-10-05 (PC de escritorio, un monitor `HDMI-1` 192
 | `Alt+Shift+4` | Captura de área → al soltar el mouse se **guarda en `~/Imágenes`** (`captura_<fecha>_<hora>.png`) |
 | `Super+S` | Sublime Text en ventana nueva (no pestaña); si está cerrado, lo abre |
 | `Ctrl+1` *(en VS Code, Sublime y Zed)* | Foco al panel de archivos, para elegir con flechas/Enter sin el mouse |
-| `Super+Alt+E` | Explorador de archivos: yazi en terminal nueva maximizada, en `~/Escritorio` (`q` cierra la ventana) |
+| `Super+Alt+E` | Explorador de archivos: yazi en terminal nueva maximizada, en `~/Escritorio` (`q` cierra la ventana). Cupo 2: cierra los yazi olvidados más viejos |
 | `Escape` / `Alt+Space` (dentro de rofi) | Cerrar rofi |
 
 Dentro de yazi (además del preset):
@@ -381,6 +381,19 @@ WezTerm reutiliza el proceso GUI ya abierto: sin `--cwd` abriría en el cwd de e
 `wezterm start --always-new-process --cwd ~/Escritorio -- yazi ~/Escritorio`. WezTerm no tiene `--maximize`:
 lo hace el evento `gui-startup` de `wezterm.lua` para las ventanas cuyo comando es `yazi`, y ese evento solo
 corre en un proceso nuevo (de ahí `--always-new-process`). yazi va directo (sin bash detrás) → `q` cierra la ventana.
+
+**GC de yazi olvidados (cupo 2)**, equivalente al `sweep()` del Mac (`macos/iterm-yazi/yazi-desktop.js`). Antes de
+abrir la ventana nueva, `yazi-term.sh` conserva los **2 yazi con input más reciente** (atime de su `/dev/pts/N`)
+y cierra el resto matando su `wezterm-gui` (cada `Super+Alt+E` es un proceso propio → cae la ventana entera).
+Solo cuenta los yazi abiertos con el atajo (padre `wezterm-gui ... --always-new-process ... -- yazi`). Nunca toca:
+- un yazi lanzado a mano con `y` (su padre es bash);
+- un yazi con hijos vivos (shell de `:`, editor abierto desde yazi);
+- un wezterm al que se le abrió otra pestaña o panel.
+
+```sh
+~/.local/bin/yazi-term.sh --dry-sweep    # solo reporta qué conservaría / cerraría; no abre ni cierra nada
+cat ~/.cache/yazi-term-gc.log            # qué hizo cada barrido real
+```
 
 ### 7b. WezTerm — terminal por defecto (reemplaza mate-terminal)
 
