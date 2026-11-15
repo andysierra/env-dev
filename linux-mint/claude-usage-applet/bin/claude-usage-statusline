@@ -1,0 +1,94 @@
+#!/usr/bin/python3 -I
+"""Script de statusline para Claude Code: guarda `rate_limits` para el applet Claude Usage.
+
+Claude Code lo ejecuta con un JSON en stdin. Este script:
+  1. Escribe ~/.cache/claude-usage/usage.json (de forma atómica y solo si el uso cambió).
+  2. Si se instaló envolviendo un statusline previo (--wrap-b64), ejecuta ese comando con el
+     mismo stdin y devuelve su salida tal cual. Si no, imprime un resumen corto del uso.
+"""
+import base64
+import json
+import os
+import subprocess
+import sys
+import tempfile
+import time
+
+
+def cache_path():
+    base = os.environ.get("XDG_CACHE_HOME") or os.path.join(os.path.expanduser("~"), ".cache")
+    return os.path.join(base, "claude-usage", "usage.json")
+
+
+def read_existing(path):
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return None
+
+
+def save(rate_limits):
+    path = cache_path()
+    old = read_existing(path)
+    if rate_limits is None and isinstance(old, dict) and old.get("rate_limits"):
+        return  # sesión nueva sin respuesta todavía: no borrar el último dato bueno
+    if isinstance(old, dict) and old.get("rate_limits") == rate_limits:
+        return  # sin cambios: no despertar al applet
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=os.path.dirname(path), prefix=".usage-")
+    try:
+        with os.fdopen(fd, "w") as f:
+            json.dump({"version": 1, "updated_at": time.time(), "rate_limits": rate_limits}, f)
+        os.replace(tmp, path)
+    except OSError:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+
+
+def summary(rl):
+    if not isinstance(rl, dict):
+        return ""
+    parts = []
+    for key, name in (("five_hour", "5h"), ("seven_day", "7d")):
+        w = rl.get(key)
+        if isinstance(w, dict) and isinstance(w.get("used_percentage"), (int, float)):
+            parts.append(f"{name} {w['used_percentage']:.0f}%")
+    return " · ".join(parts)
+
+
+def main():
+    raw = sys.stdin.buffer.read()
+    rl = None
+    try:
+        data = json.loads(raw.decode("utf-8") or "{}")
+        rl = data.get("rate_limits") if isinstance(data, dict) else None
+        if not isinstance(rl, dict):
+            rl = None
+    except ValueError:
+        data = None
+    if data is not None:
+        try:
+            save(rl)
+        except OSError:
+            pass
+
+    wrapped = None
+    args = sys.argv[1:]
+    if len(args) >= 2 and args[0] == "--wrap-b64":
+        try:
+            wrapped = base64.b64decode(args[1]).decode("utf-8")
+        except ValueError:
+            wrapped = None
+    if wrapped:
+        p = subprocess.run(wrapped, shell=True, input=raw, stdout=subprocess.PIPE)
+        sys.stdout.buffer.write(p.stdout)
+        return p.returncode
+    print(summary(rl) or "Claude")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

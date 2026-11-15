@@ -1,0 +1,14 @@
+[Applet Factory]
+Id=ClaudeUsageAppletFactory
+InProcess=false
+Location=@APPLET_BIN@
+Name=Claude Usage Applet Factory
+Description=Fábrica del applet Claude Usage
+
+[ClaudeUsageApplet]
+Name=Claude Usage
+Name[es]=Uso de Claude
+Description=Claude usage (5-hour session and weekly limit)
+Description[es]=Uso de Claude (sesión de 5 h y límite semanal)
+Icon=utilities-system-monitor
+MateComponentId=OAFIID:MATE_ClaudeUsageApplet;

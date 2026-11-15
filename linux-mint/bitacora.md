@@ -101,7 +101,8 @@ linux-mint/
 ├── greenclip/greenclip.toml    → ~/.config/greenclip.toml
 ├── greenclip/greenclip.desktop → ~/.config/autostart/greenclip.desktop
 ├── bin/clipboard.sh            → ~/.local/bin/clipboard.sh        (chmod +x)
-└── applications/*.desktop      → ~/.local/share/applications/  (claudia + FreeOffice renombrados)
+├── applications/*.desktop      → ~/.local/share/applications/  (claudia + FreeOffice renombrados)
+└── claude-usage-applet/        → ./install.sh (applet de panel "Uso de Claude"; ver sección 13)
 ```
 
 ### 1. Paquetes (humano, requiere sudo)
@@ -664,6 +665,38 @@ cp -r ../skills/paraphernalia ../skills/pdiff ~/.claude/skills/
 - La copia del repo (público) está **anonimizada**: nombres del sistema y del cliente del trabajo → genéricos.
   La instalada en `~/.claude/skills` puede tener los reales.
 - `~/.claude/skills/synced/` la gestiona Claude (sincronización con la cuenta): no tocarla.
+
+### 13. Applet de panel "Uso de Claude" (claude-usage-applet/)
+
+```sh
+cd claude-usage-applet && ./install.sh   # sudo solo para /usr/share/mate-panel/applets
+# luego: clic derecho en el panel > Añadir al panel… > "Uso de Claude"
+```
+
+- **Qué muestra** en el panel: dos filas, `Ahora 43% 1h16 01:00` y `Semana 18% 5d23h vie 20, 23:00`
+  (% usado · cuánto falta para que se libere · hora o fecha de liberación). Cada fila lleva un color
+  de semáforo: verde, amarillo desde 60 %, rojo desde 85 %. El clic izquierdo abre una ventanita
+  con el detalle.
+- **"Ahora"** es el bloque de 5 h que empieza con el primer mensaje, y **"Semana"** el de 7 días. Las
+  duraciones son iguales para todos los planes; lo que varía según el plan es cuánto uso cabe en
+  cada bloque. El `max_5x` de las credenciales es un multiplicador de capacidad, no horas.
+- **Dos fuentes**, que se cambian en el menú o en Preferencias:
+  - **API:** `api.anthropic.com/api/oauth/usage` con el token de `~/.claude/.credentials.json`,
+    cada 1, 5 u 8 min. Es un endpoint **no oficial**. El applet nunca renueva el token: si lo
+    hiciera, rotaría el refresh token de Claude Code.
+  - **Statusline:** el script `bin/claude-usage-statusline` escribe `~/.cache/claude-usage/usage.json`.
+    Si ya existe un statusline propio, lo envuelve en vez de reemplazarlo.
+  - Las dos se verificaron con el plan Team (`rate_limits` llega al statusline aunque la
+    documentación dice "Pro/Max").
+- **Stack:** Python + GTK3 + `MatePanelApplet-4.0` por GObject Introspection, igual que mintMenu. No
+  hay que compilar. Es un applet aparte: **no** modifica MultiLoad (`mate-applets`), así que apt no
+  lo pisa.
+- **Instalación:** todo va a `~/.local/share` (código, esquema GSettings y servicio D-Bus), excepto el
+  descriptor `.mate-panel-applet`, porque mate-panel solo lee `/usr/share/mate-panel/applets`.
+- **Gotcha:** en una sesión de Claude dentro de Zed (ACP) no corre ningún statusline; para probar
+  esa fuente hay que usar `claude` en una terminal.
+- **Gotcha:** en el esquema de GSettings, `<choices>` solo sirve para claves de tipo string. Para
+  enteros hay que usar `<range>`, y la UI ofrece solo 1, 5 u 8.
 
 ### Gotchas (lo que costó descubrir)
 

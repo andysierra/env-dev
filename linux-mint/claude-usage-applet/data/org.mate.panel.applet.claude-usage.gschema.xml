@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="mint-claude-monitor">
+  <enum id="org.mate.panel.applet.claude-usage.Source">
+    <value nick="api" value="0"/>
+    <value nick="statusline" value="1"/>
+  </enum>
+  <!-- Relocatable: cada instancia del applet guarda sus ajustes en la ruta que le da el panel. -->
+  <schema id="org.mate.panel.applet.claude-usage">
+    <key name="source" enum="org.mate.panel.applet.claude-usage.Source">
+      <default>'api'</default>
+      <summary>Fuente de datos</summary>
+      <description>api: consulta api.anthropic.com con el token de Claude Code. statusline: lee el archivo que escribe el script de statusline.</description>
+    </key>
+    <key name="api-interval" type="i">
+      <range min="1" max="8"/>
+      <default>5</default>
+      <summary>Minutos entre consultas a la API (Preferencias ofrece 1, 5 u 8)</summary>
+    </key>
+    <key name="yellow-from" type="i">
+      <range min="1" max="100"/>
+      <default>60</default>
+      <summary>Porcentaje usado a partir del cual el texto se pone amarillo</summary>
+    </key>
+    <key name="red-from" type="i">
+      <range min="1" max="100"/>
+      <default>85</default>
+      <summary>Porcentaje usado a partir del cual el texto se pone rojo</summary>
+    </key>
+    <key name="show-weekly" type="b">
+      <default>true</default>
+      <summary>Mostrar la fila «Semana»</summary>
+    </key>
+    <key name="show-reset-time" type="b">
+      <default>true</default>
+      <summary>Mostrar la hora / fecha-hora en que se libera cada límite</summary>
+    </key>
+    <key name="color-green" type="s">
+      <default>'#73C991'</default>
+      <summary>Color verde del semáforo</summary>
+    </key>
+    <key name="color-yellow" type="s">
+      <default>'#E5C07B'</default>
+      <summary>Color amarillo del semáforo</summary>
+    </key>
+    <key name="color-red" type="s">
+      <default>'#F07178'</default>
+      <summary>Color rojo del semáforo</summary>
+    </key>
+  </schema>
+</schemalist>
