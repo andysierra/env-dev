@@ -695,6 +695,8 @@ cd claude-usage-applet && ./install.sh   # sudo solo para /usr/share/mate-panel/
   descriptor `.mate-panel-applet`, porque mate-panel solo lee `/usr/share/mate-panel/applets`.
 - **Gotcha:** en una sesión de Claude dentro de Zed (ACP) no corre ningún statusline; para probar
   esa fuente hay que usar `claude` en una terminal.
+- **Port a macOS:** [`../macos/spec-claude-usage-menubar.md`](../macos/spec-claude-usage-menubar.md),
+  un spec autocontenido para que la IA del Mac lo implemente.
 - **Gotcha:** en el esquema de GSettings, `<choices>` solo sirve para claves de tipo string. Para
   enteros hay que usar `<range>`, y la UI ofrece solo 1, 5 u 8.
 
